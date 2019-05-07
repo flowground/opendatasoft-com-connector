@@ -1,0 +1,623 @@
+{
+    "title": "opendatasoft",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/opendatasoft.com/2.1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://public.opendatasoft.com/api/v2",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "api_key": {
+                "label": "apikey (api_key)",
+                "viewClass": "TextFieldView"
+            },
+            "username": {
+                "label": "Username (basic)",
+                "viewClass": "TextFieldView"
+            },
+            "password": {
+                "label": "Password (basic)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "getRoot": {
+            "main": "./lib/actions/getRoot.js",
+            "title": "API entry point\n\nProvides links for:\n* catalog, your domain's list of datasets\n* opendatasoft, all datasets on the OpenDataSoft network\n",
+            "description": "API entry point\n\nProvides links for:\n* catalog, your domain's list of datasets\n* opendatasoft, all datasets on the OpenDataSoft network\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getRoot.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPages": {
+            "main": "./lib/actions/getPages.js",
+            "title": "List of all pages from this portal.\n",
+            "description": "List of all pages from this portal.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPages.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPage": {
+            "main": "./lib/actions/getPage.js",
+            "title": "A single page's metadata from this portal\n",
+            "description": "A single page's metadata from this portal\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getSource": {
+            "main": "./lib/actions/getSource.js",
+            "title": "Source entry points\n\nProvides links for the source's datasets and metadata.\n",
+            "description": "Source entry points\n\nProvides links for the source's datasets and metadata.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "aggregateDatasets": {
+            "main": "./lib/actions/aggregateDatasets.js",
+            "title": "Compute aggregations from catalog and return a list of each aggregate indexed by their names.\n",
+            "description": "Compute aggregations from catalog and return a list of each aggregate indexed by their names.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/aggregateDatasets.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDatasets": {
+            "main": "./lib/actions/getDatasets.js",
+            "title": "List of available datasets, each with their endpoints, paginated.\n\nLinks provided:\n* previous page\n* next page\n* last page\n* first page\n",
+            "description": "List of available datasets, each with their endpoints, paginated.\n\nLinks provided:\n* previous page\n* next page\n* last page\n* first page\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDatasets.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDataset": {
+            "main": "./lib/actions/getDataset.js",
+            "title": "List of available endpoints for the specified dataset, with metadata and endpoints.\n\nWill provide links for:\n* the attachments endpoint\n* the files endpoint\n* the records endpoint\n* the catalog endpoint\n",
+            "description": "List of available endpoints for the specified dataset, with metadata and endpoints.\n\nWill provide links for:\n* the attachments endpoint\n* the files endpoint\n* the records endpoint\n* the catalog endpoint\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDataset.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "aggregateRecords": {
+            "main": "./lib/actions/aggregateRecords.js",
+            "title": "Compute aggregations from dataset records and return a list of each aggregate indexed by their names.\n",
+            "description": "Compute aggregations from dataset records and return a list of each aggregate indexed by their names.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/aggregateRecords.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDatasetAttachements": {
+            "main": "./lib/actions/getDatasetAttachements.js",
+            "title": "Get list of all available attachments\n",
+            "description": "Get list of all available attachments\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDatasetAttachements.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "downloadDatasetAttachement": {
+            "main": "./lib/actions/downloadDatasetAttachement.js",
+            "title": "Download attachment\n",
+            "description": "Download attachment\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/downloadDatasetAttachement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportRecordsCSV": {
+            "main": "./lib/actions/exportRecordsCSV.js",
+            "title": "Export dataset in CSV format\n",
+            "description": "Export dataset in CSV format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportRecordsCSV.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportRecordsGEOJSON": {
+            "main": "./lib/actions/exportRecordsGEOJSON.js",
+            "title": "Export dataset in GEOJSON format\n",
+            "description": "Export dataset in GEOJSON format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportRecordsGEOJSON.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportRecordsICAL": {
+            "main": "./lib/actions/exportRecordsICAL.js",
+            "title": "Export dataset in ICAL format\n",
+            "description": "Export dataset in ICAL format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportRecordsICAL.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportRecordsJSON": {
+            "main": "./lib/actions/exportRecordsJSON.js",
+            "title": "Export dataset in JSON format\n",
+            "description": "Export dataset in JSON format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportRecordsJSON.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportRecordsOV2": {
+            "main": "./lib/actions/exportRecordsOV2.js",
+            "title": "Export dataset in OV2 format\n",
+            "description": "Export dataset in OV2 format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportRecordsOV2.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportRecordsSHP": {
+            "main": "./lib/actions/exportRecordsSHP.js",
+            "title": "Export dataset in Esri shapefile (shp) format\n",
+            "description": "Export dataset in Esri shapefile (shp) format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportRecordsSHP.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportRecordsXLS": {
+            "main": "./lib/actions/exportRecordsXLS.js",
+            "title": "Export dataset in XLS (Excel) format\n",
+            "description": "Export dataset in XLS (Excel) format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportRecordsXLS.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sendDatasetFeedback": {
+            "main": "./lib/actions/sendDatasetFeedback.js",
+            "title": "Create new feedback entry.\n",
+            "description": "Create new feedback entry.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendDatasetFeedback.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDatasetFile": {
+            "main": "./lib/actions/getDatasetFile.js",
+            "title": "Download file\n",
+            "description": "Download file\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDatasetFile.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getRecords": {
+            "main": "./lib/actions/getRecords.js",
+            "title": "Search dataset's records.\n",
+            "description": "Search dataset's records.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getRecords.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getRecord": {
+            "main": "./lib/actions/getRecord.js",
+            "title": "Retrieve a single record based on its ID.\n",
+            "description": "Retrieve a single record based on its ID.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getRecord.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDatasetReuses": {
+            "main": "./lib/actions/getDatasetReuses.js",
+            "title": "Get list of reuses\n",
+            "description": "Get list of reuses\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDatasetReuses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDatasetReuse": {
+            "main": "./lib/actions/getDatasetReuse.js",
+            "title": "Retrieve a single reuse based on its ID.\n",
+            "description": "Retrieve a single reuse based on its ID.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDatasetReuse.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDatasetSnapshots": {
+            "main": "./lib/actions/getDatasetSnapshots.js",
+            "title": "List of all snapshots for this dataset.\n",
+            "description": "List of all snapshots for this dataset.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDatasetSnapshots.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "downloadDatasetSnapshot": {
+            "main": "./lib/actions/downloadDatasetSnapshot.js",
+            "title": "List of all snapshots for this dataset.\n",
+            "description": "List of all snapshots for this dataset.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/downloadDatasetSnapshot.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportDatasetsCSV": {
+            "main": "./lib/actions/exportDatasetsCSV.js",
+            "title": "Export catalog (source) in CSV format\n",
+            "description": "Export catalog (source) in CSV format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportDatasetsCSV.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportDatasetsJson": {
+            "main": "./lib/actions/exportDatasetsJson.js",
+            "title": "Export catalog (source) in JSON format\n",
+            "description": "Export catalog (source) in JSON format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportDatasetsJson.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportDatasetsRDF": {
+            "main": "./lib/actions/exportDatasetsRDF.js",
+            "title": "Export catalog (source) in RDF/XML format\n",
+            "description": "Export catalog (source) in RDF/XML format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportDatasetsRDF.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportDatasetsRSS": {
+            "main": "./lib/actions/exportDatasetsRSS.js",
+            "title": "Export catalog (source) in RSS format\n",
+            "description": "Export catalog (source) in RSS format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportDatasetsRSS.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportDatasetsTTL": {
+            "main": "./lib/actions/exportDatasetsTTL.js",
+            "title": "Export catalog (source) in TTL (turtle/rdf) format\n",
+            "description": "Export catalog (source) in TTL (turtle/rdf) format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportDatasetsTTL.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "exportDatasetsXLS": {
+            "main": "./lib/actions/exportDatasetsXLS.js",
+            "title": "Export catalog (source) in XLS (Excel) format\n",
+            "description": "Export catalog (source) in XLS (Excel) format\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/exportDatasetsXLS.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getMetadataTemplatesTypes": {
+            "main": "./lib/actions/getMetadataTemplatesTypes.js",
+            "title": "List of available metadata templates types, each with their endpoints.\n",
+            "description": "List of available metadata templates types, each with their endpoints.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getMetadataTemplatesTypes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getMetadataTemplatesType": {
+            "main": "./lib/actions/getMetadataTemplatesType.js",
+            "title": "List of metadata templates available for this type.\n",
+            "description": "List of metadata templates available for this type.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getMetadataTemplatesType.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getMetadataTemplate": {
+            "main": "./lib/actions/getMetadataTemplate.js",
+            "title": "A single metadata_template\n",
+            "description": "A single metadata_template\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getMetadataTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "source": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "catalog",
+                "opendatasoft",
+                "monitoring"
+            ],
+            "default": "catalog"
+        },
+        "dataset_id": {
+            "required": true,
+            "type": "string"
+        },
+        "file_id": {
+            "required": true,
+            "type": "string"
+        },
+        "thumbnail_size": {
+            "type": "string"
+        }
+    }
+}

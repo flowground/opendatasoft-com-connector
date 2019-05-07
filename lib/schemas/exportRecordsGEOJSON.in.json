@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "properties": {
+        "source": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "catalog",
+                "opendatasoft",
+                "monitoring"
+            ],
+            "default": "catalog"
+        },
+        "dataset_id": {
+            "required": true,
+            "type": "string"
+        },
+        "where": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "search": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "rows": {
+            "required": false,
+            "type": "integer",
+            "minimum": -1,
+            "default": -1
+        },
+        "start": {
+            "required": false,
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+        },
+        "timezone": {
+            "type": "string",
+            "default": "UTC"
+        },
+        "pretty": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "source": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "catalog",
+                "opendatasoft",
+                "monitoring"
+            ],
+            "default": "catalog"
+        },
+        "dataset_id": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "comment": {
+                    "type": "string"
+                },
+                "newValues": {
+                    "description": "New record value",
+                    "type": "object"
+                },
+                "recordid": {
+                    "description": "Feedback entry's recordid",
+                    "type": "string"
+                },
+                "schema": {
+                    "description": "Record schema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

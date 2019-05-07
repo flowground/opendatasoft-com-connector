@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "source": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "catalog",
+                "opendatasoft",
+                "monitoring"
+            ],
+            "default": "catalog"
+        },
+        "select": {
+            "required": false,
+            "type": "string"
+        },
+        "group_by": {
+            "required": false,
+            "type": "string"
+        },
+        "where": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

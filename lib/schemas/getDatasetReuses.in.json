@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+        "source": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "catalog",
+                "opendatasoft",
+                "monitoring"
+            ],
+            "default": "catalog"
+        },
+        "dataset_id": {
+            "required": true,
+            "type": "string"
+        },
+        "start": {
+            "required": false,
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+        },
+        "rows": {
+            "required": false,
+            "type": "integer",
+            "minimum": -1,
+            "maximum": 100,
+            "default": 10
+        },
+        "timezone": {
+            "type": "string",
+            "default": "UTC"
+        }
+    }
+}

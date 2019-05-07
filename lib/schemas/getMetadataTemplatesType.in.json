@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "source": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "catalog",
+                "opendatasoft",
+                "monitoring"
+            ],
+            "default": "catalog"
+        },
+        "metadata_template_type": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "basic",
+                "interop",
+                "extra"
+            ],
+            "default": "basic"
+        }
+    }
+}

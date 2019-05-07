@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "source": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "catalog",
+                "opendatasoft",
+                "monitoring"
+            ],
+            "default": "catalog"
+        },
+        "dataset_id": {
+            "required": true,
+            "type": "string"
+        },
+        "pretty": {
+            "type": "boolean",
+            "default": false
+        },
+        "timezone": {
+            "type": "string",
+            "default": "UTC"
+        },
+        "select": {
+            "required": false,
+            "type": "string"
+        },
+        "include_app_metas": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

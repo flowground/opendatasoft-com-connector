@@ -1,0 +1,61 @@
+{
+    "type": "object",
+    "properties": {
+        "source": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "catalog",
+                "opendatasoft",
+                "monitoring"
+            ],
+            "default": "catalog"
+        },
+        "where": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "search": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "rows": {
+            "required": false,
+            "type": "integer",
+            "minimum": -1,
+            "maximum": 100,
+            "default": 10
+        },
+        "start": {
+            "required": false,
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+        },
+        "sort": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "pretty": {
+            "type": "boolean",
+            "default": false
+        },
+        "timezone": {
+            "type": "string",
+            "default": "UTC"
+        },
+        "include_app_metas": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}
